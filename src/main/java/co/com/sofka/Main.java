@@ -7,8 +7,8 @@ public class Main {
     public static void main(String[] args) {
         Logger log = Logger.getLogger(Main.class.getName());
         Calculadora calculadora = new Calculadora();
-        List<Integer> lista1 = List.of(10,10,2,0);
-        List<Integer> lista2 = List.of(1,10,3,0);
+        List<Double> lista1 = List.of(10.0,10.0,2.0,0.0);
+        List<Double> lista2 = List.of(1.0,10.0,0.0,10.0);
         Scanner in = new Scanner(System.in);
         int option;
         do {

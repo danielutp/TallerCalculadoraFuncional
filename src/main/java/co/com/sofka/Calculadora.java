@@ -1,11 +1,12 @@
 package co.com.sofka;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Calculadora {
     private Integer contador = 0 ;
-    public void suma(List<Integer> Lista1,List<Integer> Lista2){
+    public void suma(List<Double> Lista1,List<Double> Lista2){
         AtomicInteger indice = new AtomicInteger();
         Lista1.stream()
                 .map(i -> {
@@ -14,7 +15,7 @@ public class Calculadora {
                 .forEach(i ->System.out.println(i));
     }
 
-    public void resta(List<Integer> Lista1,List<Integer> Lista2){
+    public void resta(List<Double> Lista1,List<Double> Lista2){
         AtomicInteger indice = new AtomicInteger();
         Lista1.stream()
                 .map(i -> {
@@ -23,17 +24,21 @@ public class Calculadora {
                 .forEach(i ->System.out.println(i));
     }
 
-    public void division(List<Integer> Lista1,List<Integer> Lista2){
+    public void division(List<Double> Lista1,List<Double> Lista2){
         AtomicInteger indice = new AtomicInteger();
         Lista1.stream()
-                .filter(i -> i>=0)
                 .map(i -> {
-                    return i / Lista2.get(indice.getAndIncrement());
+                    if (Lista2.get(indice.get())==0){
+                        indice.getAndIncrement();
+                    } else {
+                        return i / Lista2.get(indice.getAndIncrement());
+                    }
+                    return "No se puede dividir entre 0";
                 })
                 .forEach(i ->System.out.println(i));
     }
 
-    public void multiplicacion(List<Integer> lista1,List<Integer> lista2){
+    public void multiplicacion(List<Double> lista1,List<Double> lista2){
         AtomicInteger indice = new AtomicInteger();
         lista1.stream()
                 .map(i -> {
